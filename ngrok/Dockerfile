@@ -4,6 +4,14 @@ FROM $BUILD_FROM
 # Copy root filesystem
 COPY rootfs /
 
+#permissions
+RUN \
+chmod 555 /etc/services.d/ngrok/run && \
+chmod 555 /etc/services.d/ngrok/finish && \
+chmod 555 /etc/fix-attrs.d/scripts && \
+chmod 555 /usr/bin/ngrok.sh
+
+
 # Setup requirements
 ARG BUILD_ARCH
 RUN set -x \
